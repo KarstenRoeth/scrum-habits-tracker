@@ -11,20 +11,100 @@
     <meta name="apple-mobile-web-app-title" content="Scrum Habits">
 </head>
 <body>
-    <h1>🎯 Scrum Habits Tracker</h1>
-    
-    <div class="add-habit">
-        <h2>Neue Gewohnheit hinzufügen</h2>
-        <input type="text" id="habitName" placeholder="z.B. Kaffee mit Teammitglied">
-        <input type="number" id="reminderDays" placeholder="Erinnern nach X Tagen" min="1" value="7">
-        <button id="addBtn">Hinzufügen</button>
+    <div class="container">
+        <header>
+            <h1>🎯 Scrum Habits Tracker</h1>
+            <p class="subtitle">Dein persönlicher Begleiter für professionelle Gewohnheiten</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="habits">Meine Habits</button>
+            <button class="tab-btn" data-tab="add">Hinzufügen</button>
+            <button class="tab-btn" data-tab="templates">Vorlagen</button>
+        </div>
+
+        <!-- Tab: Meine Habits -->
+        <div class="tab-content active" id="habits-tab">
+            <div class="actions-bar">
+                <button id="suggestBtn" class="btn-suggest">
+                    <span class="icon">💡</span>
+                    Was kann ich jetzt tun?
+                </button>
+                <div class="filter-section">
+                    <label for="categoryFilter">Filter:</label>
+                    <select id="categoryFilter">
+                        <option value="all">Alle</option>
+                        <option value="team">🤝 Team</option>
+                        <option value="organization">🏢 Organisation</option>
+                        <option value="personal">👤 Persönlich</option>
+                    </select>
+                </div>
+            </div>
+            <div id="habitsList"></div>
+        </div>
+
+        <!-- Tab: Hinzufügen -->
+        <div class="tab-content" id="add-tab">
+            <div class="add-habit-card">
+                <h2>Neue Gewohnheit erstellen</h2>
+                
+                <div class="form-group">
+                    <label for="habitName">Name der Gewohnheit *</label>
+                    <input type="text" id="habitName" placeholder="z.B. Kaffee mit Teammitglied">
+                </div>
+
+                <div class="form-group">
+                    <label for="habitCategory">Kategorie *</label>
+                    <select id="habitCategory">
+                        <option value="team">🤝 Team - Zusammenarbeit mit dem Team</option>
+                        <option value="organization">🏢 Organisation - Stakeholder & Prozesse</option>
+                        <option value="personal">👤 Persönlich - Weiterentwicklung</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="habitPriority">Priorität *</label>
+                    <select id="habitPriority">
+                        <option value="high">🔴 Hoch - Sehr wichtig, nicht vernachlässigen</option>
+                        <option value="medium" selected>🟡 Mittel - Regelmäßig wichtig</option>
+                        <option value="low">🟢 Niedrig - Nice to have</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="reminderDays">Erinnerung nach (Tagen) *</label>
+                    <input type="number" id="reminderDays" placeholder="7" min="1" value="7">
+                    <small>Nach wie vielen Tagen soll dich die App erinnern?</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="habitNotes">Notizen (optional)</label>
+                    <textarea id="habitNotes" rows="3" placeholder="z.B. Ziel: Vertrauen aufbauen, offene Kommunikation fördern"></textarea>
+                </div>
+
+                <button id="addBtn" class="btn-primary">Gewohnheit hinzufügen</button>
+            </div>
+        </div>
+
+        <!-- Tab: Vorlagen -->
+        <div class="tab-content" id="templates-tab">
+            <div class="templates-section">
+                <h2>Vorlagen für Scrum Master</h2>
+                <p class="info-text">Starte mit bewährten Gewohnheiten aus der Praxis. Wähle ein Template und passe es an deine Bedürfnisse an.</p>
+                
+                <div class="template-grid" id="templatesList"></div>
+            </div>
+        </div>
     </div>
 
-    <div class="actions">
-        <button id="suggestBtn">💡 Was kann ich jetzt tun?</button>
+    <!-- Modal für Habit Details -->
+    <div id="habitModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody"></div>
+        </div>
     </div>
-
-    <div id="habitsList"></div>
 
     <script src="app.js"></script>
 </body>
