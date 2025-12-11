@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrum Habits Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Scrum Habits">
+</head>
+<body>
+    <h1>🎯 Scrum Habits Tracker</h1>
+    
+    <div class="add-habit">
+        <h2>Neue Gewohnheit hinzufügen</h2>
+        <input type="text" id="habitName" placeholder="z.B. Kaffee mit Teammitglied">
+        <input type="number" id="reminderDays" placeholder="Erinnern nach X Tagen" min="1" value="7">
+        <button id="addBtn">Hinzufügen</button>
+    </div>
+
+    <div class="actions">
+        <button id="suggestBtn">💡 Was kann ich jetzt tun?</button>
+    </div>
+
+    <div id="habitsList"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
