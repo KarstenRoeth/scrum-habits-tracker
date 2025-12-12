@@ -605,7 +605,13 @@ document.querySelector('.close').addEventListener('click', closeModal);
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./service-worker.js')
-        .then(reg => console.log('Service Worker registriert:', reg))
+        .then(reg => {
+            console.log('Service Worker registriert:', reg);
+            // Prüfe regelmäßig auf Updates (alle 60 Sekunden)
+            setInterval(() => {
+                reg.update();
+            }, 60000);
+        })
         .catch(err => console.log('Service Worker Fehler:', err));
 }
 
